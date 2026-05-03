@@ -2,7 +2,7 @@ import { motion as Motion } from 'framer-motion'
 import { testimonials } from '../data/site'
 import { SectionLabel } from './SectionLabel'
 
-const EASE = [0.215, 0.61, 0.355, 1]
+const EASE = [0.215, 0.61, 0.355, 1] as const
 
 export function Testimonials() {
   return (

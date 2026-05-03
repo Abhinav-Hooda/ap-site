@@ -1,7 +1,7 @@
 import { motion as Motion } from 'framer-motion'
 import { SectionLabel } from './SectionLabel'
 
-const EASE = [0.215, 0.61, 0.355, 1]
+const EASE = [0.215, 0.61, 0.355, 1] as const
 
 const projectLogos = [
   { name: 'Parsvnath', src: '/logos/logo-parsvnaths.png' },

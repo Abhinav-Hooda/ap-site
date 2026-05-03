@@ -2,7 +2,7 @@ import { motion as Motion } from 'framer-motion'
 import { site } from '../data/site'
 import { IconFacebook, IconInstagram, IconX } from './icons'
 
-const EASE = [0.215, 0.61, 0.355, 1]
+const EASE = [0.215, 0.61, 0.355, 1] as const
 
 function scrollToSection(id: string) {
   document.getElementById(`section-${id}`)?.scrollIntoView({
@@ -48,7 +48,7 @@ export function Footer() {
             Quick links
           </p>
           <ul className="mt-4 flex flex-col gap-3">
-            {quick.map((item, idx) => (
+            {quick.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#section-${item.id}`}
@@ -79,7 +79,7 @@ export function Footer() {
               { href: site.social.instagram, icon: <IconInstagram className="size-6" />, label: 'Instagram' },
               { href: site.social.facebook, icon: <IconFacebook className="size-6" />, label: 'Facebook' },
               { href: site.social.twitter, icon: <IconX className="size-6" />, label: 'X' }
-            ].map((social, idx) => (
+            ].map((social) => (
               <Motion.a
                 key={social.label}
                 whileHover={{ y: -4, color: 'var(--color-accent)' }}

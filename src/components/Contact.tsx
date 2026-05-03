@@ -5,7 +5,7 @@ import { openWhatsApp } from '../lib/whatsapp'
 import { IconFacebook, IconInstagram, IconX } from './icons'
 import { SectionLabel } from './SectionLabel'
 
-const EASE = [0.215, 0.61, 0.355, 1]
+const EASE = [0.215, 0.61, 0.355, 1] as const
 
 const socialClass =
   'flex size-11 items-center justify-center rounded-none border border-border text-foreground transition-colors duration-200 hover:border-accent hover:text-accent touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'

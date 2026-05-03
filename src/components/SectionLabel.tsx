@@ -1,6 +1,6 @@
 import { motion as Motion } from 'framer-motion'
 
-const EASE = [0.215, 0.61, 0.355, 1]
+const EASE = [0.215, 0.61, 0.355, 1] as const
 
 type SectionLabelProps = {
   text: string

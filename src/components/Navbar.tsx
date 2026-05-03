@@ -4,8 +4,8 @@ import { site } from '../data/site'
 import { openWhatsApp } from '../lib/whatsapp'
 import { IconWhatsApp } from './icons'
 
-const EASE = [0.215, 0.61, 0.355, 1]
-const NAV_SPRING = { type: 'spring', stiffness: 220, damping: 24 }
+const EASE = [0.215, 0.61, 0.355, 1] as const
+const NAV_SPRING = { type: 'spring' as const, stiffness: 220, damping: 24 }
 
 const navItems = [
   { id: 'home', label: 'Home' },
@@ -68,7 +68,7 @@ export function Navbar() {
         opacity: 1,
         scale: scrolled ? 0.98 : 1,
       }}
-      transition={hidden ? { duration: 0.2, ease: 'easeOut' } : { duration: 0.6, ease: EASE, scale: NAV_SPRING }}
+      transition={hidden ? { duration: 0.2, ease: 'easeOut' as const } : { duration: 0.6, ease: EASE, scale: NAV_SPRING }}
       className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md transition-transform duration-200 ease-out"
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-4 md:px-8">
