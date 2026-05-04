@@ -4,8 +4,14 @@ import { SectionLabel } from './SectionLabel'
 const EASE = [0.215, 0.61, 0.355, 1] as const
 
 const projectLogos = [
+  { name: 'HL City', src: '/logos/hl-city.png' },
   { name: 'Parsvnath', src: '/logos/logo-parsvnaths.png' },
-  { name: 'Suncity', src: '/logos/suncity.jpeg' },
+  { name: 'NV City', src: '/logos/nv-city.jpg' },
+  { name: 'Omaxe Green Valley', src: '/logos/omaxe-green-valley.png' },
+  { name: 'Omaxe', src: '/logos/omaxe.webp' },
+  { name: 'Suncity', src: '/logos/suncity.svg' },
+  { name: 'HUDA', src: '/logos/huda.svg' },
+  { name: 'IMT', src: '/logos/imt.png' },
 ]
 
 export function Projects() {
@@ -17,7 +23,7 @@ export function Projects() {
     >
       <div className="mx-auto max-w-5xl px-5 md:px-8 text-center">
         <SectionLabel text="Portfolio" />
-        
+
         <Motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,36 +73,7 @@ export function Projects() {
               </div>
             </Motion.div>
           ))}
-
-          {/* Placeholders for upcoming */}
-          {[1, 2, 3, 4, 5, 6].map((i, idx) => {
-            const actualIdx = projectLogos.length + idx
-            return (
-              <Motion.div 
-                key={`placeholder-${i}`} 
-                initial={{ opacity: 0, y: 80, rotate: actualIdx % 2 === 0 ? -3 : 3 }}
-                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.7, delay: (actualIdx % 4) * 0.12, ease: EASE }}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                className="group relative aspect-square bg-background flex items-center justify-center p-8 transition-colors duration-300 hover:bg-muted"
-              >
-                <div className="text-center">
-                  <div className="font-inter text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40 group-hover:text-accent transition-colors">
-                    Project Logo
-                  </div>
-                  <div className="font-mulish mt-2 text-sm font-bold text-muted-foreground/20 group-hover:text-foreground transition-colors">
-                    Coming Soon
-                  </div>
-                </div>
-                
-                <div className="absolute top-4 left-4 size-2 border-t border-l border-border opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-4 right-4 size-2 border-b border-r border-border opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Motion.div>
-            )
-          })}
         </div>
-
         <Motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

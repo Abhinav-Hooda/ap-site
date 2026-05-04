@@ -20,7 +20,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* Lenis handle smooth scroll */
   }
 
   @media (prefers-reduced-motion: reduce) {
