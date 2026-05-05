@@ -62,7 +62,6 @@ function App() {
         <About />
         <Services />
         <Projects />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />
