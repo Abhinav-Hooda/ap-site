@@ -9,29 +9,19 @@ type SectionLabelProps = {
 export function SectionLabel({ text }: SectionLabelProps) {
   return (
     <Motion.div 
-      initial={{ opacity: 0, x: -80 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, ease: EASE }}
-      className="mb-6 flex items-center gap-4"
+      className="mb-8 flex items-center justify-center gap-6"
     >
-      <Motion.span
-        initial={{ scaleX: 0.85, rotate: 0 }}
-        whileInView={{ scaleX: 1, rotate: -2 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-        className="h-px flex-1 bg-border origin-left"
-        aria-hidden
-      />
-      <span className="font-inter text-xs font-bold uppercase tracking-[0.15em] text-accent">
-        {text}
-      </span>
-      <Motion.span
-        initial={{ scaleX: 0.85, rotate: 0 }}
-        whileInView={{ scaleX: 1, rotate: 2 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-        className="h-px flex-1 bg-border origin-right"
-        aria-hidden
-      />
+      <div className="h-px w-8 bg-accent/20" aria-hidden />
+      <div className="glass-dark px-6 py-2 rounded-full border border-black/5 shadow-soft">
+        <span className="font-inter text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+          {text}
+        </span>
+      </div>
+      <div className="h-px w-8 bg-accent/20" aria-hidden />
     </Motion.div>
   )
 }

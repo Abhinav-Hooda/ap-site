@@ -50,24 +50,24 @@ export function Projects() {
         </Motion.div>
 
         {/* Logo Grid */}
-        <div className="mt-20 grid grid-cols-2 gap-px bg-border border border-border sm:grid-cols-3 lg:grid-cols-4 overflow-hidden">
+        <div className="mt-20 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {projectLogos.map((logo, idx) => (
             <Motion.div 
               key={logo.name} 
-              initial={{ opacity: 0, y: 80, rotate: idx % 2 === 0 ? -3 : 3 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: (idx % 4) * 0.12, ease: EASE }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="group relative aspect-square bg-background flex items-center justify-center p-10 transition-colors duration-300 hover:bg-muted"
+              transition={{ duration: 0.6, delay: (idx % 4) * 0.1, ease: EASE }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group relative aspect-square glass rounded-3xl flex items-center justify-center p-10 transition-all duration-300 hover:shadow-soft border border-white/20"
             >
               <img 
                 src={logo.src} 
                 alt={`${logo.name} logo`}
-                className="max-h-full max-w-full object-contain filter grayscale contrast-[1.2] transition-all duration-300 group-hover:grayscale-0 group-hover:contrast-100"
+                className="max-h-full max-w-full object-contain filter grayscale opacity-60 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 dark:grayscale-0 dark:opacity-100"
               />
-              <div className="absolute bottom-4 left-0 w-full text-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="font-inter text-[10px] font-bold uppercase tracking-widest text-accent">
+              <div className="absolute bottom-6 left-0 w-full text-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                <span className="glass-dark px-3 py-1 rounded-full font-inter text-[10px] font-bold uppercase tracking-widest text-accent">
                   {logo.name}
                 </span>
               </div>

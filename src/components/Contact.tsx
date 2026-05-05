@@ -8,7 +8,7 @@ import { SectionLabel } from './SectionLabel'
 const EASE = [0.215, 0.61, 0.355, 1] as const
 
 const socialClass =
-  'flex size-11 items-center justify-center rounded-none border border-border text-foreground transition-colors duration-200 hover:border-accent hover:text-accent touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'
+  'flex size-11 items-center justify-center rounded-full border border-black/5 glass-dark text-foreground transition-all duration-300 hover:border-accent/30 hover:text-accent hover:shadow-soft touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'
 
 export function Contact() {
   const [name, setName] = useState('')
@@ -25,17 +25,18 @@ export function Contact() {
   return (
     <section
       id="section-contact"
-      className="border-b border-border bg-background py-24 md:py-32 lg:py-40"
+      className="bg-background py-24 md:py-32 lg:py-40"
       aria-labelledby="contact-heading"
     >
       <div className="mx-auto max-w-5xl px-5 md:px-8">
         <SectionLabel text="Contact" />
         
         <Motion.div
-          initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: EASE }}
+          className="text-center"
         >
           <h2
             id="contact-heading"
@@ -43,54 +44,56 @@ export function Contact() {
           >
             Get In Touch
           </h2>
-          <Motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
-            className="mt-4 h-px w-24 bg-accent origin-left"
-            aria-hidden
-          />
+          <div className="mx-auto mt-6 h-1 w-24 bg-accent" aria-hidden />
         </Motion.div>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+        <div className="mt-20 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <Motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
           >
-            <h3 className="font-inter text-xs font-bold uppercase tracking-[0.15em] text-accent">
+            <h3 className="font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
               Contact details
             </h3>
-            <ul className="font-inter mt-6 space-y-4 text-base text-muted-foreground">
-              <li>
-                <span className="text-foreground" aria-hidden>📞 </span>
-                Phone:{' '}
-                <a
-                  className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-                  href={`tel:${site.phoneDisplay.replace(/\s/g, '')}`}
-                >
-                  {site.phoneDisplay}
-                </a>
+            <ul className="font-inter mt-8 space-y-6 text-base text-muted-foreground">
+              <li className="flex items-start gap-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/5 text-accent" aria-hidden>📞</span>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider opacity-60">Phone</p>
+                  <a
+                    className="text-foreground font-semibold underline decoration-accent/20 underline-offset-4 transition-all hover:text-accent hover:decoration-accent"
+                    href={`tel:${site.phoneDisplay.replace(/\s/g, '')}`}
+                  >
+                    {site.phoneDisplay}
+                  </a>
+                </div>
               </li>
-              <li>
-                <span className="text-foreground" aria-hidden>📧 </span>
-                Email:{' '}
-                <a
-                  className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-                  href={`mailto:${site.email}`}
-                >
-                  {site.email}
-                </a>
+              <li className="flex items-start gap-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/5 text-accent" aria-hidden>📧</span>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider opacity-60">Email</p>
+                  <a
+                    className="text-foreground font-semibold underline decoration-accent/20 underline-offset-4 transition-all hover:text-accent hover:decoration-accent"
+                    href={`mailto:${site.email}`}
+                  >
+                    {site.email}
+                  </a>
+                </div>
               </li>
-              <li>
-                <span className="text-foreground" aria-hidden>📍 </span>
-                Address: {site.address}
+              <li className="flex items-start gap-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/5 text-accent" aria-hidden>📍</span>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider opacity-60">Address</p>
+                  <p className="text-foreground font-semibold leading-relaxed">
+                    {site.address}
+                  </p>
+                </div>
               </li>
             </ul>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-12 flex flex-wrap gap-4">
               {[
                 { href: site.social.instagram, icon: <IconInstagram className="size-5" />, label: 'Instagram' },
                 { href: site.social.facebook, icon: <IconFacebook className="size-5" />, label: 'Facebook' },
@@ -98,9 +101,9 @@ export function Contact() {
               ].map((social, idx) => (
                 <Motion.a
                   key={social.label}
-                  initial={{ opacity: 0, scale: 0.6, rotate: -6 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                  whileHover={{ scale: 1.1, rotate: 3 }}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.1, y: -4 }}
                   viewport={{ once: true }}
                   transition={{ type: 'spring', stiffness: 220, damping: 14, delay: 0.4 + idx * 0.1 }}
                   href={social.href}
@@ -116,75 +119,79 @@ export function Contact() {
           </Motion.div>
 
           <Motion.div 
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.4, ease: EASE }}
-            className="border border-border bg-surface p-6 shadow-none md:p-8"
+            className="glass p-8 rounded-[2.5rem] shadow-soft border border-white/20"
           >
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="enquiry-name"
-                  className="font-inter mb-2 block text-sm font-medium text-foreground"
-                >
-                  Name
-                </label>
-                <input
-                  id="enquiry-name"
-                  name="name"
-                  autoComplete="name"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="font-inter h-12 w-full rounded-none border border-border bg-transparent px-3 text-base text-foreground outline-none transition-colors duration-150 placeholder:text-muted-foreground/60 focus:border-accent focus:ring-0"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="enquiry-phone"
-                  className="font-inter mb-2 block text-sm font-medium text-foreground"
-                >
-                  Phone
-                </label>
-                <input
-                  id="enquiry-phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="font-inter h-12 w-full rounded-none border border-border bg-transparent px-3 text-base text-foreground outline-none transition-colors duration-150 placeholder:text-muted-foreground/60 focus:border-accent focus:ring-0"
-                  placeholder="Your phone number"
-                />
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="enquiry-name"
+                    className="font-inter mb-2 block text-[10px] font-bold uppercase tracking-wider text-muted-foreground"
+                  >
+                    Name
+                  </label>
+                  <input
+                    id="enquiry-name"
+                    name="name"
+                    autoComplete="name"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="font-inter h-12 w-full rounded-2xl border border-black/5 bg-white/50 px-4 text-base text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground/40 focus:border-accent/30 focus:bg-white focus:shadow-soft"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="enquiry-phone"
+                    className="font-inter mb-2 block text-[10px] font-bold uppercase tracking-wider text-muted-foreground"
+                  >
+                    Phone
+                  </label>
+                  <input
+                    id="enquiry-phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="font-inter h-12 w-full rounded-2xl border border-black/5 bg-white/50 px-4 text-base text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground/40 focus:border-accent/30 focus:bg-white focus:shadow-soft"
+                    placeholder="Phone number"
+                  />
+                </div>
               </div>
               <div>
                 <label
                   htmlFor="enquiry-interest"
-                  className="font-inter mb-2 block text-sm font-medium text-foreground"
+                  className="font-inter mb-2 block text-[10px] font-bold uppercase tracking-wider text-muted-foreground"
                 >
                   Property interest
                 </label>
-                <select
-                  id="enquiry-interest"
-                  name="interest"
-                  value={interest}
-                  onChange={(e) => setInterest(e.target.value)}
-                  className="font-inter h-12 w-full rounded-none border border-border bg-transparent px-3 text-base text-foreground outline-none transition-colors duration-150 focus:border-accent focus:ring-0"
-                >
-                  {interestOptions.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    id="enquiry-interest"
+                    name="interest"
+                    value={interest}
+                    onChange={(e) => setInterest(e.target.value)}
+                    className="font-inter h-12 w-full appearance-none rounded-2xl border border-black/5 bg-white/50 px-4 text-base text-foreground outline-none transition-all duration-300 focus:border-accent/30 focus:bg-white focus:shadow-soft"
+                  >
+                    {interestOptions.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
               <div>
                 <label
                   htmlFor="enquiry-message"
-                  className="font-inter mb-2 block text-sm font-medium text-foreground"
+                  className="font-inter mb-2 block text-[10px] font-bold uppercase tracking-wider text-muted-foreground"
                 >
                   Message
                 </label>
@@ -194,15 +201,15 @@ export function Contact() {
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="font-inter min-h-[7rem] w-full resize-y rounded-none border border-border bg-transparent px-3 py-3 text-base text-foreground outline-none transition-colors duration-150 placeholder:text-muted-foreground/60 focus:border-accent focus:ring-0"
+                  className="font-inter min-h-[8rem] w-full resize-y rounded-2xl border border-black/5 bg-white/50 px-4 py-3 text-base text-foreground outline-none transition-all duration-300 placeholder:text-muted-foreground/40 focus:border-accent/30 focus:bg-white focus:shadow-soft"
                   placeholder="Tell us what you are looking for"
                 />
               </div>
               <Motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, boxShadow: 'var(--shadow-glow)' }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="font-inter min-h-11 w-full rounded-none bg-dark py-3 text-sm font-bold tracking-wide text-white transition-colors duration-200 hover:bg-black touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark"
+                className="font-inter min-h-12 w-full rounded-2xl bg-accent py-3 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:bg-accent-strong shadow-soft touch-manipulation"
               >
                 Send on WhatsApp
               </Motion.button>

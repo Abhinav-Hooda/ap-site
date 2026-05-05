@@ -17,7 +17,7 @@ export function WhatsAppFloat() {
       whileTap={{ scale: 0.9 }}
       type="button"
       onClick={() => openWhatsApp()}
-      className="fixed bottom-6 right-5 z-50 flex size-14 items-center justify-center rounded-none bg-accent text-white transition-colors duration-200 hover:bg-accent-strong touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:right-8"
+      className="fixed bottom-6 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/20 transition-all duration-300 hover:bg-accent-strong touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:right-8"
       title="Chat with us"
       aria-label="Chat with us on WhatsApp"
     >

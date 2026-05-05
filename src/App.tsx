@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { About } from './components/About'
@@ -12,6 +12,24 @@ import { Testimonials } from './components/Testimonials'
 import { WhatsAppFloat } from './components/WhatsAppFloat'
 
 function App() {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme')
+      return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    }
+    return false
+  })
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [isDark])
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -37,10 +55,10 @@ function App() {
   }, [])
 
   return (
-    <div className="relative isolate min-h-svh bg-background text-foreground">
-      <Navbar />
+    <div className="relative isolate min-h-svh bg-background text-foreground transition-colors duration-300">
+      <Navbar isDark={isDark} setIsDark={setIsDark} />
       <main>
-        <Hero />
+        <Hero isDark={isDark} />
         <About />
         <Services />
         <Projects />

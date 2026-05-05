@@ -1,11 +1,11 @@
-import { motion as Motion } from 'framer-motion'
+import { AnimatePresence, motion as Motion } from 'framer-motion'
 import { hero, site } from '../data/site'
 import { openWhatsApp } from '../lib/whatsapp'
 
 const EASE = [0.215, 0.61, 0.355, 1] as const
 const HERO_SPRING = { type: 'spring' as const, stiffness: 220, damping: 14 }
 
-export function Hero() {
+export function Hero({ isDark }: { isDark: boolean }) {
   const words = hero.headline.split(' ')
   const line1 = words.slice(0, 4).join(' ')
   const line2 = words.slice(4).join(' ')
@@ -18,16 +18,13 @@ export function Hero() {
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 w-full">
-        <Motion.img
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease: EASE }}
-          src="/bg-image-ap.png"
+        <img
+          src={isDark ? '/img-bg-dark.png' : '/bg-image-ap.png'}
           alt=""
           className="h-full w-full object-cover object-center"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-background/40 transition-colors duration-300" />
       </div>
 
       <Motion.div 

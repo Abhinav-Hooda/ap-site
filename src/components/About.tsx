@@ -1,8 +1,44 @@
-import { motion as Motion } from 'framer-motion'
+import { animate, motion as Motion, useInView, useMotionValue, useTransform } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import { about, stats } from '../data/site'
 import { SectionLabel } from './SectionLabel'
 
 const EASE = [0.215, 0.61, 0.355, 1] as const
+
+function CountUp({ value }: { value: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+  const count = useMotionValue(0)
+  
+  // Parse numeric part (e.g., "25+" -> 25)
+  const digits = value.replace(/[^0-9]/g, '')
+  const hasDigits = digits.length > 0
+  const numericValue = hasDigits ? parseInt(digits, 10) : 0
+  const suffix = value.replace(/[0-9]/g, '')
+  
+  const rounded = useTransform(count, (latest) => Math.round(latest))
+
+  useEffect(() => {
+    if (isInView && hasDigits) {
+      const controls = animate(count, numericValue, {
+        duration: 2,
+        ease: 'easeOut',
+      })
+      return controls.stop
+    }
+  }, [isInView, count, numericValue, hasDigits])
+
+  if (!hasDigits) {
+    return <span>{value}</span>
+  }
+
+  return (
+    <span ref={ref}>
+      <Motion.span>{rounded}</Motion.span>
+      {suffix}
+    </span>
+  )
+}
 
 export function About() {
   return (
@@ -47,38 +83,35 @@ export function About() {
           </Motion.div>
 
           <div className="relative">
-            {/* Geometric pattern background */}
+            {/* Ambient Background Glow */}
             <Motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 0.5, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: EASE }}
-              className="absolute -inset-4 border border-border" 
+              transition={{ duration: 1, ease: EASE }}
+              className="absolute -inset-10 bg-accent/5 blur-[80px] rounded-full" 
               aria-hidden="true" 
             />
             
-            <div className="relative flex flex-col gap-px bg-border border border-border shadow-none overflow-hidden">
+            <div className="relative grid gap-4">
               {stats.map((s, idx) => (
                 <Motion.div 
                   key={s.label}
-                  initial={{ opacity: 0, x: 80, rotate: idx % 2 === 0 ? 3 : -3 }}
-                  whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.7, delay: idx * 0.12, ease: EASE }}
-                  className="bg-surface p-10 transition-colors duration-300 hover:bg-muted group"
+                  transition={{ duration: 0.7, delay: idx * 0.1, ease: EASE }}
+                  className="glass p-8 rounded-3xl transition-all duration-300 hover:shadow-soft group border border-white/20"
                 >
                   <p className="font-inter text-xs font-bold uppercase tracking-[0.2em] text-accent">
                     {s.label}
                   </p>
-                  <Motion.p 
-                    initial={{ scale: 0.9 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 220, damping: 14, delay: idx * 0.12 + 0.2 }}
-                    className="font-mulish mt-3 text-5xl font-bold tracking-tighter text-foreground md:text-6xl"
-                  >
-                    {s.value}
-                  </Motion.p>
-                  <p className="font-inter mt-4 text-sm text-muted-foreground">
+                  <div className="flex items-baseline gap-2">
+                    <p className="font-mulish mt-3 text-5xl font-bold tracking-tighter text-foreground md:text-6xl">
+                      <CountUp value={s.value} />
+                    </p>
+                  </div>
+                  <p className="font-inter mt-4 text-sm text-muted-foreground leading-relaxed">
                     {s.label === 'Years of Experience' && 'Of deep-rooted local expertise in Rohtak real estate.'}
                     {s.label === 'Happy Clients' && 'Families and businesses who found their perfect space with us.'}
                     {s.label === 'Coverage' && 'Serving the heart of Haryana with transparency and trust.'}

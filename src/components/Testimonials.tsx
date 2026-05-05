@@ -37,19 +37,20 @@ export function Testimonials() {
         </Motion.div>
 
         {/* Horizontal scroll for mobile, grid for desktop */}
-        <div className="mt-16 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-8 scrollbar-hide md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-3 lg:gap-10">
+        <div className="mt-16 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-8 scrollbar-hide md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-3 lg:gap-8">
           {testimonials.map((t, idx) => (
             <Motion.article
               key={t.name}
-              initial={{ opacity: 0, y: 80, rotate: idx % 2 === 0 ? -2 : 2 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: idx * 0.12, ease: EASE }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="relative w-[min(100%,22rem)] shrink-0 snap-center border border-border border-t-[2px] border-t-accent bg-surface p-8 shadow-none md:w-full"
+              transition={{ duration: 0.7, delay: idx * 0.1, ease: EASE }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="relative w-[min(100%,22rem)] shrink-0 snap-center glass p-8 rounded-[2rem] transition-all duration-300 hover:shadow-soft border border-white/20 md:w-full"
             >
+              <div className="absolute top-0 left-12 w-12 h-1 bg-accent rounded-b-full opacity-50" />
               <span
-                className="font-playfair absolute -top-4 left-6 text-6xl text-accent opacity-20"
+                className="absolute -top-2 left-6 text-6xl text-accent opacity-10 select-none"
                 aria-hidden
               >
                 “
@@ -58,11 +59,11 @@ export function Testimonials() {
                 <p className="font-inter text-base italic leading-relaxed text-foreground md:text-lg">
                   {t.quote}
                 </p>
-                <footer className="mt-8 border-t border-border pt-6">
+                <footer className="mt-8 pt-6 border-t border-black/5">
                   <p className="font-mulish text-sm font-bold text-foreground">
                     {t.name}
                   </p>
-                  <p className="font-inter mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  <p className="font-inter mt-1 text-[10px] font-bold uppercase tracking-wider text-accent">
                     {t.role}
                   </p>
                 </footer>

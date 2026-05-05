@@ -4,18 +4,34 @@
   --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mulish: 'Mulish', ui-sans-serif, system-ui, sans-serif;
 
-  --color-background: #f2efe9;
-  --color-foreground: #38332f;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
   --color-surface: #ffffff;
-  --color-muted: #fbfbf9;
-  --color-muted-foreground: #7e7975;
-  --color-accent: #fb7339;
-  --color-accent-strong: #f14e23;
-  --color-border: #a39c8c;
-  --color-dark: #38332f;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-accent: #003399;
+  --color-accent-strong: #002266;
+  --color-border: #e2e8f0;
+  --color-dark: #0f172a;
   --color-black: #000000;
 
   --shadow-none: none;
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 12px -2px rgba(0, 0, 0, 0.03);
+  --shadow-glow: 0 0 20px -5px rgba(0, 51, 153, 0.4);
+}
+
+.dark {
+  --color-background: #020617;
+  --color-foreground: #f8fafc;
+  --color-surface: #0f172a;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #3b82f6;
+  --color-accent-strong: #60a5fa;
+  --color-border: #1e293b;
+  --color-black: #ffffff;
+  
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.3), 0 2px 12px -2px rgba(0, 0, 0, 0.2);
 }
 
 @layer base {
@@ -44,8 +60,9 @@
     font-size: 14px;
     line-height: 1.5;
     color: var(--color-foreground);
-    background-color: var(--color-background);
+    background: radial-gradient(circle at top left, var(--color-surface) 0%, var(--color-background) 100%);
     -webkit-font-smoothing: antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
   #root {
@@ -59,5 +76,21 @@
 
   ::selection {
     background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: color-mix(in srgb, var(--color-surface) 60%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
+  }
+  
+  .glass-dark {
+    background: color-mix(in srgb, var(--color-foreground) 5%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
   }
 }

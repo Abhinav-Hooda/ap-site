@@ -1,12 +1,12 @@
 export const site = {
   name: 'Abhinav Properties',
-  tagline: 'Your Trusted Property Partner in Rohtak',
-  cityTag: 'Rohtak, Haryana',
+  tagline: 'Real estate consultant in Rohtak, Haryana',
+  cityTag: 'Sector-33A, Rohtak',
   /** Replace Xs with digits — wa.me expects country code + number, no + */
-  whatsappPhone: '91XXXXXXXXXX',
-  phoneDisplay: '+91-XXXXXXXXXX',
-  email: 'abhinavproperties@gmail.com',
-  address: 'Rohtak, Haryana',
+  whatsappPhone: '919416436253',
+  phoneDisplay: '+91-9416436253',
+  email: 'info@abhinavproperties.com',
+  address: 'House no - 126, Block B, Parsvnath city, Sector-33A, Rohtak, Haryana 124021',
   social: {
     instagram: 'https://www.instagram.com/',
     facebook: 'https://www.facebook.com/',
