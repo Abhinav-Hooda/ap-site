@@ -56,10 +56,23 @@ const services = [
 export function Services() {
   return (
     <section 
-      className="bg-background py-24 md:py-32 transition-colors duration-300"
+      className="relative bg-background py-24 md:py-32 transition-colors duration-300 overflow-hidden"
       aria-labelledby="services-heading"
     >
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+      {/* Background Image with Smooth Top Transition */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <img
+          src="/service-img.jpg"
+          alt=""
+          className="h-full w-full object-cover object-center opacity-20 dark:opacity-30 transition-opacity duration-300"
+          aria-hidden="true"
+        />
+        {/* Whitish Blur Gradient for smooth transition */}
+        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-background via-background/60 to-transparent pointer-events-none z-[1]" />
+        <div className="absolute inset-x-0 top-0 h-48 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black,transparent)] pointer-events-none z-[2]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
         <div className="text-center">
           <SectionLabel text="Our Services" />
           
@@ -87,7 +100,7 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
-              className="flex flex-col items-start text-left p-8 bg-surface border border-border rounded-2xl transition-all duration-300 hover:border-accent/30 hover:shadow-soft group"
+              className="flex flex-col items-start text-left p-8 glass backdrop-blur-md rounded-2xl transition-all duration-300 hover:border-accent/30 hover:shadow-soft group"
             >
               <div className="mb-6 flex size-12 items-center justify-center rounded-xl bg-accent/5 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-white">
                 {service.icon}

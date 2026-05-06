@@ -1,17 +1,12 @@
-import { motion as Motion } from 'framer-motion'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { site } from '../data/site'
 import { openWhatsApp } from '../lib/whatsapp'
 import { IconWhatsApp } from './icons'
-
-const EASE = [0.215, 0.61, 0.355, 1] as const
-const NAV_SPRING = { type: 'spring' as const, stiffness: 220, damping: 24 }
 
 const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'properties', label: 'Properties' },
-  { id: 'testimonials', label: 'Testimonials' },
   { id: 'contact', label: 'Contact' },
 ] as const
 

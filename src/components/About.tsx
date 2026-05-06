@@ -104,7 +104,7 @@ export function About() {
                   <CountUp value={s.value} />
                 </p>
               </div>
-              <p className="font-inter mt-4 text-xs text-muted-foreground leading-relaxed">
+              <p className="font-inter mt-4 text-sm text-muted-foreground leading-relaxed">
                 {s.label === 'Years of Experience' && 'Of deep-rooted local expertise in Rohtak real estate.'}
                 {s.label === 'Happy Clients' && 'Families and businesses who found their perfect space with us.'}
                 {s.label === 'Coverage' && 'Serving the heart of Haryana with transparency and trust.'}

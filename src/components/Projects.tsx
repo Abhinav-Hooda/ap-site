@@ -1,5 +1,5 @@
 import { motion as Motion } from 'framer-motion'
-import { SectionLabel } from './SectionLabel'
+
 
 const EASE = [0.215, 0.61, 0.355, 1] as const
 
@@ -18,12 +18,21 @@ export function Projects() {
   return (
     <section
       id="section-properties"
-      className="border-b border-border bg-surface py-24 md:py-32 lg:py-40"
+      className="relative border-b border-border bg-background py-24 md:py-32 lg:py-40 overflow-hidden"
       aria-labelledby="projects-heading"
     >
-      <div className="mx-auto max-w-5xl px-5 md:px-8 text-center">
-        <SectionLabel text="Portfolio" />
+      {/* Background Image - Sharp and Whitish */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <img
+          src="/image-service.jpg"
+          alt=""
+          className="h-full w-full object-cover object-center opacity-10 dark:opacity-20"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-background/40 transition-colors duration-300" />
+      </div>
 
+      <div className="relative z-10 mx-auto max-w-5xl px-5 md:px-8 text-center">
         <Motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,14 +45,7 @@ export function Projects() {
           >
             We Deal in These Places & Projects
           </h2>
-          <Motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
-            className="mx-auto mt-6 h-1 w-24 bg-accent"
-            aria-hidden
-          />
+          <div className="mx-auto mt-6 h-1 w-24 bg-accent" aria-hidden />
           <p className="font-inter mx-auto mt-8 max-w-2xl text-lg text-muted-foreground">
             Partnering with the most trusted developers and prime locations in Rohtak and surrounding areas.
           </p>

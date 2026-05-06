@@ -1,4 +1,4 @@
-import { AnimatePresence, motion as Motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 import { hero, site } from '../data/site'
 import { openWhatsApp } from '../lib/whatsapp'
 
