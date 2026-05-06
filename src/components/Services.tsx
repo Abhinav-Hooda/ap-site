@@ -5,8 +5,9 @@ const EASE = [0.215, 0.61, 0.355, 1] as const
 
 const services = [
   {
-    title: 'Property For Sale',
-    description: 'Find all type of Property under your specified budget range with complete relevant description.',
+    title: 'Residential Properties',
+    description: 'Find verified residential plots, flats, builder floors, and family homes in prime locations.',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop',
     icon: (
       <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -15,8 +16,9 @@ const services = [
     ),
   },
   {
-    title: 'Property For Rent',
-    description: 'Select your desired rental property within your budget and find perfect rental property.',
+    title: 'Commercial Spaces',
+    description: 'Explore shops, office spaces, SCO plots, and commercial investments with high growth potential.',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
     icon: (
       <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 21h18" />
@@ -28,8 +30,9 @@ const services = [
     ),
   },
   {
-    title: 'Post Property',
-    description: 'Post Residential, Commercial, Industrial & Agriculture property online with full description.',
+    title: 'Property Consultation',
+    description: 'Get expert guidance on pricing, investment opportunities, documentation, and market trends.',
+    image: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=800&auto=format&fit=crop',
     icon: (
       <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
@@ -40,8 +43,9 @@ const services = [
     ),
   },
   {
-    title: 'Buyers & Tenants',
-    description: 'Find Buyers & Tenant for all type of Residential, Commercial, Agriculture & Industrial property.',
+    title: 'Buy • Sell • Invest',
+    description: 'Whether you\'re purchasing your first property or expanding your portfolio, we simplify every step.',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop',
     icon: (
       <svg className="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -86,9 +90,12 @@ export function Services() {
               id="services-heading"
               className="mt-4 font-mulish text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-[2.5rem] uppercase"
             >
-              Buy & Sell Properties
+              Complete Real Estate Solutions
             </h2>
             <div className="mx-auto mt-6 h-1 w-20 bg-accent" aria-hidden />
+            <p className="font-inter mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Helping you buy, sell, invest, and manage properties with confidence across Rohtak and nearby areas.
+            </p>
           </Motion.div>
         </div>
 
@@ -100,15 +107,15 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
-              className="flex flex-col items-start text-left p-8 glass backdrop-blur-md rounded-2xl transition-all duration-300 hover:border-accent/30 hover:shadow-soft group"
+              className="flex flex-col items-start text-left p-6 sm:p-8 glass backdrop-blur-md rounded-2xl transition-all duration-300 hover:border-accent/30 hover:shadow-soft group"
             >
-              <div className="mb-6 flex size-12 items-center justify-center rounded-xl bg-accent/5 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-white">
+              <div className="mb-4 sm:mb-6 flex size-12 items-center justify-center rounded-xl bg-accent/5 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-white">
                 {service.icon}
               </div>
               <h3 className="font-mulish text-lg font-bold text-foreground">
                 {service.title}
               </h3>
-              <p className="font-inter mt-3 text-muted-foreground leading-relaxed text-sm">
+              <p className="font-inter mt-2 sm:mt-3 text-muted-foreground leading-relaxed text-sm">
                 {service.description}
               </p>
             </Motion.div>

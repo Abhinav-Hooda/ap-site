@@ -34,8 +34,8 @@ export function Hero({ isDark }: { isDark: boolean }) {
         className="relative z-10 mx-auto max-w-5xl px-5 py-24 text-center md:px-8 md:py-32 lg:py-40 md:-translate-y-20"
       >
         <Motion.p 
-          initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
-          animate={{ opacity: 1, scale: 1, rotate: 1 }}
+          initial={{ opacity: 0, scale: 0.6, y: -20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ ...HERO_SPRING, delay: 0.1 }}
           className="font-inter mb-6 text-xs font-bold uppercase tracking-[0.2em] text-accent inline-block"
         >
@@ -45,8 +45,8 @@ export function Hero({ isDark }: { isDark: boolean }) {
         <h1 id="hero-heading" className="font-mulish mx-auto max-w-4xl text-[2.5rem] font-bold leading-[1.1] tracking-[-0.02em] text-foreground md:text-5xl lg:text-7xl overflow-hidden">
           <Motion.span 
             className="block"
-            initial={{ x: -120, rotate: -6, opacity: 0 }}
-            animate={{ x: 0, rotate: -1, opacity: 1 }}
+            initial={{ x: -120, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
           >
             {line1}
@@ -74,7 +74,7 @@ export function Hero({ isDark }: { isDark: boolean }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.7 }}
-          className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center sm:justify-center"
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <button
             type="button"
@@ -83,14 +83,14 @@ export function Hero({ isDark }: { isDark: boolean }) {
                 .getElementById('section-properties')
                 ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
             }
-            className="min-h-11 rounded-none bg-accent px-8 py-3 font-inter text-sm font-bold tracking-wide text-white transition-all duration-200 hover:bg-accent-strong touch-manipulation"
+            className="w-full max-w-[280px] sm:w-auto min-h-11 rounded-none bg-accent px-8 py-3 font-inter text-sm font-bold tracking-wide text-white transition-all duration-200 hover:bg-accent-strong touch-manipulation"
           >
             View Properties
           </button>
           <button
             type="button"
             onClick={() => openWhatsApp()}
-            className="min-h-11 rounded-none border border-foreground bg-transparent px-8 py-3 font-inter text-sm font-bold tracking-wide text-foreground transition-all duration-200 hover:border-accent hover:bg-surface/80 hover:text-accent touch-manipulation backdrop-blur-sm"
+            className="w-full max-w-[280px] sm:w-auto min-h-11 rounded-none border border-foreground bg-transparent px-8 py-3 font-inter text-sm font-bold tracking-wide text-foreground transition-all duration-200 hover:border-accent hover:bg-surface/80 hover:text-accent touch-manipulation backdrop-blur-sm"
           >
             Contact Us on WhatsApp
           </button>

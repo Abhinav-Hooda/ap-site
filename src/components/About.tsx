@@ -94,17 +94,17 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: idx * 0.1, ease: EASE }}
-              className="flex flex-col items-center justify-start bg-surface/50 backdrop-blur-sm p-8 rounded-[2.5rem] border border-border/50 text-center transition-all duration-300 hover:shadow-soft hover:-translate-y-1 h-full min-h-[280px]"
+              className="flex flex-col items-center justify-start bg-surface/50 backdrop-blur-sm p-6 sm:p-8 rounded-[2.5rem] border border-border/50 text-center transition-all duration-300 hover:shadow-soft hover:-translate-y-1 h-full sm:min-h-[280px]"
             >
               <p className="font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-accent h-4">
                 {s.label}
               </p>
-              <div className="flex-1 flex flex-col items-center justify-center">
+              <div className="flex-1 flex flex-col items-center justify-center my-4 sm:my-0">
                 <p className="font-mulish text-4xl font-bold tracking-tighter text-foreground md:text-5xl">
                   <CountUp value={s.value} />
                 </p>
               </div>
-              <p className="font-inter mt-4 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-inter mt-2 sm:mt-4 text-sm text-muted-foreground leading-relaxed">
                 {s.label === 'Years of Experience' && 'Of deep-rooted local expertise in Rohtak real estate.'}
                 {s.label === 'Happy Clients' && 'Families and businesses who found their perfect space with us.'}
                 {s.label === 'Coverage' && 'Serving the heart of Haryana with transparency and trust.'}
