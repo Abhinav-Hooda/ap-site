@@ -61,7 +61,7 @@ export function About() {
           src="/bg-about-img.png"
           alt=""
           style={{ y, scale: 1.4 }}
-          className="h-full w-full object-cover object-center transition-opacity duration-300"
+          className="h-full w-full object-cover object-center dark:opacity-20 transition-opacity duration-300"
           aria-hidden="true"
         />
       </div>
