@@ -1,4 +1,5 @@
-import { motion as Motion } from 'framer-motion'
+import { motion as Motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { hero, site } from '../data/site'
 import { openWhatsApp } from '../lib/whatsapp'
 
@@ -6,21 +7,30 @@ const EASE = [0.215, 0.61, 0.355, 1] as const
 const HERO_SPRING = { type: 'spring' as const, stiffness: 220, damping: 14 }
 
 export function Hero({ isDark }: { isDark: boolean }) {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+
   const words = hero.headline.split(' ')
   const line1 = words.slice(0, 4).join(' ')
   const line2 = words.slice(4).join(' ')
 
   return (
     <section
+      ref={ref}
       id="section-home"
       className="relative flex min-h-[95svh] items-center justify-center overflow-hidden border-b border-border bg-background"
       aria-labelledby="hero-heading"
     >
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0 w-full">
-        <img
+      <div className="absolute inset-0 z-0 w-full overflow-hidden">
+        <Motion.img
           src={isDark ? '/img-bg-dark.png' : '/bg-image-ap.png'}
           alt=""
+          style={{ y, scale: 1.2 }}
           className="h-full w-full object-cover object-center"
           aria-hidden="true"
         />

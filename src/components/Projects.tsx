@@ -1,4 +1,5 @@
-import { motion as Motion } from 'framer-motion'
+import { motion as Motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 
 const EASE = [0.215, 0.61, 0.355, 1] as const
@@ -15,17 +16,26 @@ const projectLogos = [
 ]
 
 export function Projects() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"])
+
   return (
     <section
+      ref={ref}
       id="section-properties"
       className="relative border-b border-border bg-background py-24 md:py-32 lg:py-40 overflow-hidden"
       aria-labelledby="projects-heading"
     >
       {/* Background Image - Sharp and Whitish */}
-      <div className="absolute inset-0 z-0 w-full h-full">
-        <img
+      <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
+        <Motion.img
           src="/image-service.jpg"
           alt=""
+          style={{ y, scale: 1.4 }}
           className="h-full w-full object-cover object-center opacity-10 dark:opacity-20"
           aria-hidden="true"
         />

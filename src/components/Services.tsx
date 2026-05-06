@@ -1,4 +1,5 @@
-import { motion as Motion } from 'framer-motion'
+import { motion as Motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { SectionLabel } from './SectionLabel'
 
 const EASE = [0.215, 0.61, 0.355, 1] as const
@@ -58,16 +59,25 @@ const services = [
 ]
 
 export function Services() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"])
+
   return (
     <section 
+      ref={ref}
       className="relative bg-background py-24 md:py-32 transition-colors duration-300 overflow-hidden"
       aria-labelledby="services-heading"
     >
       {/* Background Image with Smooth Top Transition */}
-      <div className="absolute inset-0 z-0 w-full h-full">
-        <img
+      <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
+        <Motion.img
           src="/service-img.jpg"
           alt=""
+          style={{ y, scale: 1.4 }}
           className="h-full w-full object-cover object-center opacity-20 dark:opacity-30 transition-opacity duration-300"
           aria-hidden="true"
         />

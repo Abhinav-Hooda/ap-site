@@ -1,4 +1,4 @@
-import { animate, motion as Motion, useInView, useMotionValue, useTransform } from 'framer-motion'
+import { animate, motion as Motion, useInView, useMotionValue, useTransform, useScroll } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import { about, stats } from '../data/site'
 import { SectionLabel } from './SectionLabel'
@@ -41,17 +41,26 @@ function CountUp({ value }: { value: string }) {
 }
 
 export function About() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"])
+
   return (
     <section
+      ref={ref}
       id="section-about"
       className="relative border-b border-border bg-background py-24 md:py-32 lg:py-40 overflow-hidden"
       aria-labelledby="about-heading"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 z-0 w-full h-full">
-        <img
+      <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
+        <Motion.img
           src="/bg-about-img.png"
           alt=""
+          style={{ y, scale: 1.4 }}
           className="h-full w-full object-cover object-center opacity-10 dark:opacity-20 transition-opacity duration-300"
           aria-hidden="true"
         />
