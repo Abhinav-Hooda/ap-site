@@ -9,13 +9,13 @@ function CountUp({ value }: { value: string }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.5 })
   const count = useMotionValue(0)
-  
+
   // Parse numeric part (e.g., "25+" -> 25)
   const digits = value.replace(/[^0-9]/g, '')
   const hasDigits = digits.length > 0
   const numericValue = hasDigits ? parseInt(digits, 10) : 0
   const suffix = value.replace(/[0-9]/g, '')
-  
+
   const rounded = useTransform(count, (latest) => Math.round(latest))
 
   useEffect(() => {
@@ -61,16 +61,16 @@ export function About() {
           src="/bg-about-img.png"
           alt=""
           style={{ y, scale: 1.4 }}
-          className="h-full w-full object-cover object-center opacity-10 dark:opacity-20 transition-opacity duration-300"
+          className="h-full w-full object-cover object-center transition-opacity duration-300"
           aria-hidden="true"
         />
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-5 md:px-8">
         <SectionLabel text="Our Story" />
-        
+
         <div className="text-center max-w-4xl mx-auto">
-          <Motion.div 
+          <Motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -83,7 +83,7 @@ export function About() {
               {about.heading}
             </h2>
             <div className="mt-6 h-1 w-20 bg-accent mx-auto" aria-hidden />
-            
+
             <div className="mt-12 space-y-6 text-center">
               <p className="font-inter text-xl leading-relaxed text-foreground md:text-2xl font-medium">
                 {about.body.split('. ')[0]}.
@@ -97,7 +97,7 @@ export function About() {
 
         <div className="mt-20 grid gap-6 sm:grid-cols-3 max-w-5xl mx-auto items-stretch">
           {stats.map((s, idx) => (
-            <Motion.div 
+            <Motion.div
               key={s.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
