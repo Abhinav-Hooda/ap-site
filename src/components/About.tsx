@@ -59,10 +59,10 @@ export function About() {
       <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
         <Motion.img
           src="/bg-about-img.png"
-          alt=""
+          alt="Abhinav Properties modern architecture in Rohtak"
           style={{ y, scale: 1.4 }}
           className="h-full w-full object-cover object-center dark:opacity-20 transition-opacity duration-300"
-          aria-hidden="true"
+          loading="lazy"
         />
       </div>
 

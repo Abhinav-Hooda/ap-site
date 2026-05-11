@@ -34,10 +34,10 @@ export function Projects() {
       <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
         <Motion.img
           src="/image-service.jpg"
-          alt=""
+          alt="Real estate projects map view in Rohtak"
           style={{ y, scale: 1.4 }}
           className="h-full w-full object-cover object-center opacity-10 dark:opacity-20"
-          aria-hidden="true"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-background/40 transition-colors duration-300" />
       </div>

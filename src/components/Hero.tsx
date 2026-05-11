@@ -29,10 +29,9 @@ export function Hero({ isDark }: { isDark: boolean }) {
       <div className="absolute inset-0 z-0 w-full overflow-hidden">
         <Motion.img
           src={isDark ? '/img-bg-dark.png' : '/bg-image-ap.png'}
-          alt=""
+          alt="Abhinav Properties residential flats and plots in Rohtak"
           style={{ y, scale: 1.2 }}
           className="h-full w-full object-cover object-center"
-          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-background/40 transition-colors duration-300" />
       </div>

@@ -76,10 +76,10 @@ export function Services() {
       <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
         <Motion.img
           src="/service-img.jpg"
-          alt=""
+          alt="Real estate consulting services in Rohtak"
           style={{ y, scale: 1.4 }}
           className="h-full w-full object-cover object-center opacity-20 dark:opacity-30 transition-opacity duration-300"
-          aria-hidden="true"
+          loading="lazy"
         />
         {/* Whitish Blur Gradient for smooth transition */}
         <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-background via-background/60 to-transparent pointer-events-none z-[1]" />
